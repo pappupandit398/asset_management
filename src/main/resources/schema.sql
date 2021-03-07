@@ -1,0 +1,30 @@
+DROP TABLE IF EXISTS empoyee;
+
+CREATE TABLE employee(
+id INT NOT NULL IDENTITY PRIMARY KEY,
+full_name VARCHAR(250) NOT NULL,
+designation VARCHAR(100) NOT NULL
+);
+
+
+DROP TABLE IF EXISTS category;
+
+CREATE TABLE category(
+id INT NOT NULL IDENTITY PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+description VARCHAR(500) DEFAULT NULL
+);
+
+DROP TABLE IF EXISTS asset;
+
+CREATE TABLE asset(
+id INT NOT NULL IDENTITY PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+purchase_date DATE,
+condition_notes VARCHAR(500),
+assignment_status VARCHAR(100),
+category_id INT,
+emp_id INT,
+FOREIGN KEY (category_id) REFERENCES Category(id),
+FOREIGN KEY (emp_id) REFERENCES employee(id)
+);
